@@ -1,5 +1,4 @@
 import os
-import random
 import xml.etree.ElementTree as ET
 from copy import deepcopy
 
@@ -11,7 +10,6 @@ from robosuite.utils.errors import RandomizationError
 from robosuite.utils.mjcf_utils import (
     array_to_string,
     find_elements,
-    xml_path_completion,
 )
 from robosuite.models.robots.robot_model import REGISTERED_ROBOTS
 from robosuite.utils.observables import Observable, sensor
@@ -402,7 +400,7 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
         for i in range(10):
             try:
                 fxtr_placements = fxtr_placement_initializer.sample()
-            except RandomizationError as e:
+            except RandomizationError:
                 if macros.VERBOSE:
                     print("Ranomization error in initial placement. Try #{}".format(i))
                 continue
@@ -470,7 +468,7 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
                 object_placements = self.placement_initializer.sample(
                     placed_objects=self.fxtr_placements
                 )
-            except RandomizationError as e:
+            except RandomizationError:
                 if macros.VERBOSE:
                     print("Randomization error in initial placement. Try #{}".format(i))
                 continue

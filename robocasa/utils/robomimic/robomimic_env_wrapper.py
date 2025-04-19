@@ -62,7 +62,7 @@ class EnvRobocasa:
             ignore_done=True,
             use_object_obs=True,
             use_camera_obs=use_image_obs,
-            camera_depths=False,
+            camera_depths=kwargs.get("camera_depths", False),
         )
         kwargs.update(update_kwargs)
 
@@ -429,7 +429,8 @@ class EnvRobocasa:
                     new_kwargs["camera_width"] = camera_width
 
         kwargs.update(new_kwargs)
-
+        print("------------NEW KWARGS", kwargs)
+        print("-------------------")
         # also initialize obs utils so it knows which modalities are image modalities
         image_modalities = list(camera_names)
         if is_v1:
