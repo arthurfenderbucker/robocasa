@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robocasa"
+version = "1.0.0"
+description = "RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Soroush Nasiriany", email = "soroush@cs.utexas.edu" },
+    { name = "Sepehr Nasiriany" },
+    { name = "Abhiram Maddukuri" },
+    { name = "Yuke Zhu" },
+]
+dependencies = [
+    "robosuite",
+    "numpy==2.2.5",
+    "numba==0.61.2",
+    "scipy==1.15.3",
+    "mujoco==3.3.1",
+    "pygame",
+    "Pillow",
+    "opencv-python",
+    "pyyaml",
+    "pynput",
+    "tqdm",
+    "termcolor",
+    "imageio",
+    "h5py",
+    "lxml",
+    "hidapi",
+    "tianshou==0.4.10",
+    "lerobot==0.3.3",
+    "gymnasium",
+    "websockets>=16.0",
+    "msgpack-numpy>=0.4.8",
+    "tyro>=1.0.13",
+    "loguru>=0.7.3",
+]
+
+[project.urls]
+Repository = "https://github.com/robocasa/robocasa"
+
+[tool.uv.sources]
+robosuite = { git = "https://github.com/ARISE-Initiative/robosuite", branch = "master" }
+
+[tool.setuptools.packages.find]
+include = ["robocasa*"]
